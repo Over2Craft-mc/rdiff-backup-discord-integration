@@ -2,9 +2,9 @@
 
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-echo "PID=$BASHPID" > ${WORK_DIR}/lock.pid
-
 test -f ${WORK_DIR}/lock.pid && echo "Looks like a backup process has already started with PID" && cat ${WORK_DIR}/lock.pid && exit
+
+echo "PID=$BASHPID" > ${WORK_DIR}/lock.pid
 
 echo "Start backuping..."
 bash ${WORK_DIR}/backup.bash
