@@ -49,3 +49,7 @@ crontab -e
 
 ### Fill in settings
 Fill settings in `settings.bash`
+
+# Thanks
+* Inspired from https://github.com/aptlt/incremential_backup_rdiff_discord_integration and https://github.com/aptlt/disk_supervision_discord_integration with a few fixes
+* https://github.com/ChaoticWeg/discord.sh to use discord webhooks pretty easly
