@@ -3,11 +3,11 @@
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 LOCK_FILE=${WORK_DIR}/lock.pid
 
-
+source "${WORK_DIR}/settings.bash"
 
 if [ -f "$LOCK_FILE" ]; then
   lockpid=`cat ${WORK_DIR}/lock.pid`
-  lockpid_msg="Looks like a backup process has already started with PID ${lockpid}"
+  lockpid_msg="Looks like a backup process has already started with PID ${lockpid}, check process or remove lock.pid"
   ${WORK_DIR}/discord.sh \
     --username "Backup" \
     --title "BACKUP ${DATE}" \
