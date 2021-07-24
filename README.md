@@ -1,4 +1,4 @@
-# Storage manager
+# Rdiff-backup with discord integration
 
 Easly incremental backup of directories with recap sent to discord and recap about system storage
 
