@@ -2,7 +2,20 @@
 
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-test -f ${WORK_DIR}/lock.pid && echo "Looks like a backup process has already started with PID" && cat ${WORK_DIR}/lock.pid && exit
+if test -f ${WORK_DIR}/lock.pid
+then
+  lockpid=`cat ${WORK_DIR}/lock.pid`
+  lockpid_msg="Looks like a backup process has already started with PID ${lockpid}"
+  DISCORD_WEBHOOK=${DISCORD_WEBHOOK_BACKUP}
+  export DISCORD_WEBHOOK
+  ${WORK_DIR}/discord.sh \
+    --username "Backup" \
+    --title "BACKUP ${DATE}" \
+    --description "${lockpid_msg}" \
+    --text "${MENTION}" \
+    --color ${COLOR_ALERT} \
+  exit
+fi
 
 echo "PID=$BASHPID" > ${WORK_DIR}/lock.pid
 
