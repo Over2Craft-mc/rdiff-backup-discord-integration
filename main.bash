@@ -1,8 +1,9 @@
 #!/bin/bash
 
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+LOCK_FILE=${WORK_DIR}/lock.pid
 
-if test -f ${WORK_DIR}/lock.pid
+if [ -f "$LOCK_FILE" ];
 then
   lockpid=`cat ${WORK_DIR}/lock.pid`
   lockpid_msg="Looks like a backup process has already started with PID ${lockpid}"
@@ -14,9 +15,7 @@ then
     --description "${lockpid_msg}" \
     --text "${MENTION}" \
     --color ${COLOR_ALERT} \
-  exit
-fi
-
+else
 echo "PID=$BASHPID" > ${WORK_DIR}/lock.pid
 
 echo "Start backuping..."
@@ -27,3 +26,5 @@ bash ${WORK_DIR}/storage-check.bash
 echo "Storage-check done, result sent to webhook"
 
 rm ${WORK_DIR}/lock.pid
+
+fi
