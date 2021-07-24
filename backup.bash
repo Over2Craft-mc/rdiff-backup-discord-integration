@@ -70,7 +70,7 @@ export DISCORD_WEBHOOK
 sed -i ':a;N;$!ba;s/\n/\\n/g' ${log_send}
 
 ## Envoi
-text_discord=`cat ${log_send}`
+text_discord=`cat $log_send | jq -Rs . | cut -c 2- | rev | cut -c 2- | rev`
 
 ${WORK_DIR}/discord.sh \
     --username "RoboBackup" \
