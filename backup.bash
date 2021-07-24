@@ -47,11 +47,11 @@ do
     ## Gestion des erreurs
     if [ "$?" = 0 ]
     then
-        echo -n "Backup du répertoire ${dir_source} \nOK\n\n" >> ${log_send}
+        echo -ne "Backup du répertoire ${dir_source} \nOK\n\n" >> ${log_send}
     else
-        echo -n "Backup du répertoire ${dir_source} \nFAILED\nCause :\n" >> ${log_send}
+        echo -ne "Backup du répertoire ${dir_source} \nFAILED\nCause :\n" >> ${log_send}
         cat ${log_temp} >> ${log_send}
-        echo -n "\n" >> ${log_send}
+        echo -ne "\n" >> ${log_send}
         couleur=0xD21D38
         notify_owner=${MENTION}
     fi
@@ -65,9 +65,6 @@ rm -rf /tmp/backup/mysql
 ## Declaration de la variable DISCORD_WEBHOOK
 DISCORD_WEBHOOK=${DISCORD_WEBHOOK_BACKUP}
 export DISCORD_WEBHOOK
-
-## Supprimer les retour a la ligne et les remplacer par le string "\n"
-sed -i ':a;N;$!ba;s/\n/\\n/g' ${log_send}
 
 ## Envoi
 text_discord=`cat $log_send | jq -Rs . | cut -c 2- | rev | cut -c 2- | rev`
