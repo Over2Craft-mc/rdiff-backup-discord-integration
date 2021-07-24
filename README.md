@@ -1,4 +1,4 @@
-# Storage manager
+# Rdiff-backup with discord integration
 
 Easly incremental backup of directories with recap sent to discord and recap about system storage
 
@@ -6,6 +6,8 @@ Easly incremental backup of directories with recap sent to discord and recap abo
 * rdiff-backup
 * curl
 * jq
+* cut - Cut characters from string (part of coreutils, included by default on most systems)
+* rev - Reversing of characters (part of util-linux, included by default on most systems)
 
 ## Installations example
 ```
