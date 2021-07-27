@@ -11,7 +11,7 @@ Easly incremental backup of directories with recap sent to discord and recap abo
 
 ## Installations example
 ```
-apt install rdiff-backup curl jq`
+apt install rdiff-backup curl jq
 chmod +x main.bash discord.sh backup.bash settings.bash storage-check.bash
 ```
 
