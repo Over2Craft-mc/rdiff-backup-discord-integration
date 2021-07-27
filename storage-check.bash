@@ -47,7 +47,7 @@ do
 
 done
 
-DISCORD_WEBHOOK=${DISCORD_WEBHOOK_BACKUP}
+DISCORD_WEBHOOK=${DISCORD_WEBHOOK_STORAGE_CHECK}
 export DISCORD_WEBHOOK
 
 sed -i ':a;N;$!ba;s/\n/\\n/g' ${log_send}
